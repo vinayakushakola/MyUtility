@@ -37,6 +37,7 @@ namespace MyUtility
                             objSnakeAndLadder.CheckOptions();
                             Console.WriteLine($"Player Position = {objSnakeAndLadder.PlayerPosition}");
                         }
+                        Console.WriteLine($"No of times dice rolled = {objSnakeAndLadder.NoOfTimeDiceRolled}");
                         break;
                     case typeGames.Exit:
                         flag = false;

@@ -7,6 +7,7 @@ namespace Games.SnakeAndLadder
         public int PlayerPosition { get; private set; }
         private Random genRandomNum;
         private int DiceRolled;
+        public int NoOfTimeDiceRolled { get; private set; }
 
         public SnakeAndLadder()
         {
@@ -31,6 +32,7 @@ namespace Games.SnakeAndLadder
             // generates number 1 to 6
             DiceRolled = genRandomNum.Next(1, 7);
             Console.WriteLine($"Dice Rolled = {DiceRolled}");
+            NoOfTimeDiceRolled++;
         }
 
         /// <summary>
