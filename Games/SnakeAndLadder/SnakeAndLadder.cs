@@ -38,27 +38,22 @@ namespace Games.SnakeAndLadder
         /// </summary>
         public void CheckOptions()
         {
-            switch ((Options)genRandomNum.Next(3))
+            switch ((typeOptions)genRandomNum.Next(3))
             {
-                case Options.NO_Play:
+                case typeOptions.NO_Play:
                     // player stays at the same position
                     break;
-                case Options.Ladder:
+                case typeOptions.Ladder:
                     // Increase player position by the dice rolled
                     PlayerPosition += DiceRolled;
                     break;
-                case Options.SnakeBite:
+                case typeOptions.SnakeBite:
                     // Decrease player position by the dice rolled
                     PlayerPosition -= DiceRolled;
                     break;
-            }   
+            }
+            if (PlayerPosition < 0)
+                PlayerPosition = 0;
         }
-    }
-
-    public enum Options
-    {
-        NO_Play,  //0
-        Ladder,   //1
-        SnakeBite //2
     }
 }

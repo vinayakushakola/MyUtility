@@ -1,5 +1,4 @@
 ﻿using System;
-using Games.SnakeAndLadder;
 
 namespace MyUtility
 {
@@ -9,11 +8,7 @@ namespace MyUtility
         {
             Console.WriteLine("============ My Utility ============");
 
-            SnakeAndLadder objSnakeAndLadder = new SnakeAndLadder();
-            objSnakeAndLadder.StartGame();
-            objSnakeAndLadder.RollAdie();
-            objSnakeAndLadder.CheckOptions();
-            Console.WriteLine($"Player Position = {objSnakeAndLadder.PlayerPosition}");
+            StartApplication.Start();
         }
     }
 }
