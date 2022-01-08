@@ -11,6 +11,7 @@ namespace MyUtility
 
             SnakeAndLadder objSnakeAndLadder = new SnakeAndLadder();
             objSnakeAndLadder.StartGame();
+            objSnakeAndLadder.RollAdie();
         }
     }
 }
