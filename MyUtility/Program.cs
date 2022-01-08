@@ -12,6 +12,8 @@ namespace MyUtility
             SnakeAndLadder objSnakeAndLadder = new SnakeAndLadder();
             objSnakeAndLadder.StartGame();
             objSnakeAndLadder.RollAdie();
+            objSnakeAndLadder.CheckOptions();
+            Console.WriteLine($"Player Position = {objSnakeAndLadder.PlayerPosition}");
         }
     }
 }
