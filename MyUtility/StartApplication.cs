@@ -29,15 +29,29 @@ namespace MyUtility
                 switch ((typeGames)choice)
                 {
                     case typeGames.SnakeAndLadder:
-                        SnakeAndLadder objSnakeAndLadder = new SnakeAndLadder();
-                        objSnakeAndLadder.StartGame();
-                        while (objSnakeAndLadder.PlayerPosition < 100)
+                        SnakeAndLadder objPlayer1 = new SnakeAndLadder();
+                        SnakeAndLadder objPlayer2 = new SnakeAndLadder();
+                        objPlayer1.StartGame();
+                        objPlayer2.StartGame();
+                        while (objPlayer1.PlayerPosition < 100 || objPlayer2.PlayerPosition < 100)
                         {
-                            objSnakeAndLadder.RollAdie();
-                            objSnakeAndLadder.CheckOptions();
-                            Console.WriteLine($"Player Position = {objSnakeAndLadder.PlayerPosition}");
+                            if (objPlayer1.PlayerPosition == 100)
+                            {
+                                Console.WriteLine($"No of times dice rolled = {objPlayer1.NoOfTimeDiceRolled}");
+                                Console.WriteLine("Player 1 Won");
+                                break;
+                            }
+                            else if (objPlayer2.PlayerPosition == 100)
+                            {
+                                Console.WriteLine($"No of times dice rolled = {objPlayer2.NoOfTimeDiceRolled}");
+                                Console.WriteLine("Player 2 Won");
+                                break;
+                            }
+                            Player(ref objPlayer1);       // Player1
+                            if (objPlayer1.PlayerPosition == 100) return;
+                            Player(ref objPlayer2, true); // Player2
                         }
-                        Console.WriteLine($"No of times dice rolled = {objSnakeAndLadder.NoOfTimeDiceRolled}");
+                        
                         break;
                     case typeGames.Exit:
                         flag = false;
@@ -48,6 +62,21 @@ namespace MyUtility
 
                 }
             }
+        }
+
+        private static void Player(ref SnakeAndLadder objPlayer, bool IsPlayer2 = false)
+        {
+            int Player = IsPlayer2 ? 2 : 1;
+            objPlayer.RollAdie();
+            Console.WriteLine($"Die Rolled Player {Player} = {objPlayer.DiceRolled}");
+            objPlayer.CheckOptions();
+            if (objPlayer.IsLadder && objPlayer.PlayerPosition != 100)
+            {
+                objPlayer.RollAdie();
+                Console.WriteLine($"Player {Player} Got Ladder");
+                Console.WriteLine($"Die Rolled Player {Player} = {objPlayer.DiceRolled}");
+            }
+            Console.WriteLine($"Player {Player} Position = {objPlayer.PlayerPosition}");
         }
     }
 }

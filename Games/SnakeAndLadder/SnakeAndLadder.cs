@@ -6,8 +6,9 @@ namespace Games.SnakeAndLadder
     {
         public int PlayerPosition { get; private set; }
         private Random genRandomNum;
-        private int DiceRolled;
+        public int DiceRolled { get; private set; }
         public int NoOfTimeDiceRolled { get; private set; }
+        public bool IsLadder { get; private set; }
 
         public SnakeAndLadder()
         {
@@ -29,9 +30,9 @@ namespace Games.SnakeAndLadder
         /// </summary>
         public void RollAdie()
         {
+            IsLadder = false;
             // generates number 1 to 6
             DiceRolled = genRandomNum.Next(1, 7);
-            Console.WriteLine($"Dice Rolled = {DiceRolled}");
             NoOfTimeDiceRolled++;
         }
 
@@ -44,10 +45,12 @@ namespace Games.SnakeAndLadder
             {
                 case typeOptions.NO_Play:
                     // player stays at the same position
+                    DiceRolled = 0;
                     break;
                 case typeOptions.Ladder:
                     // Increase player position by the dice rolled
                     PlayerPosition += DiceRolled;
+                    IsLadder = true;
                     break;
                 case typeOptions.SnakeBite:
                     // Decrease player position by the dice rolled
@@ -55,6 +58,13 @@ namespace Games.SnakeAndLadder
                     break;
             }
             CheckPlayerPosition();
+        }
+
+        public bool CheckPlayerReached(SnakeAndLadder objPlayer)
+        {
+            if (objPlayer.PlayerPosition == 100)
+                return true;
+            return false;
         }
 
         private void CheckPlayerPosition()
