@@ -52,8 +52,15 @@ namespace Games.SnakeAndLadder
                     PlayerPosition -= DiceRolled;
                     break;
             }
+            CheckPlayerPosition();
+        }
+
+        private void CheckPlayerPosition()
+        {
             if (PlayerPosition < 0)
                 PlayerPosition = 0;
+            else if (PlayerPosition > 100)
+                PlayerPosition -= DiceRolled;
         }
     }
 }
