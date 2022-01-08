@@ -1,4 +1,5 @@
 ﻿using System;
+using Games.SnakeAndLadder;
 
 namespace MyUtility
 {
@@ -7,6 +8,9 @@ namespace MyUtility
         static void Main(string[] args)
         {
             Console.WriteLine("============ My Utility ============");
+
+            SnakeAndLadder objSnakeAndLadder = new SnakeAndLadder();
+            objSnakeAndLadder.StartGame();
         }
     }
 }
