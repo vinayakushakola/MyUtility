@@ -8,19 +8,21 @@ namespace MyUtility
     {
         internal static void Start()
         {
-            Console.WriteLine("\nSelect any choice");
+            Console.WriteLine("\nGames");
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("\nGames");
+                Console.WriteLine("\nSelect any choice");
                 Console.WriteLine("1. Snake And Ladder");
                 Console.WriteLine("2. Exit");
-                int choice;
+                int choice, count = 0;
                 bool validChoice;
                 do
                 {
+                    if (count > 0) Console.WriteLine("\nError : Invalid input\n\tPlease enter number");
                     Console.Write("Enter your choice = ");
                     validChoice = int.TryParse(Console.ReadLine(), out choice);
+                    if (!validChoice) count++; 
                 } while (!validChoice);
 
 
@@ -38,6 +40,9 @@ namespace MyUtility
                         break;
                     case typeGames.Exit:
                         flag = false;
+                        break;
+                    default:
+                        Console.WriteLine($"Enter choice between {typeGames.SnakeAndLadder.GetHashCode()} to {typeGames.Exit.GetHashCode()}");
                         break;
 
                 }
